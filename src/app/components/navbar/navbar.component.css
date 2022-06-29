@@ -1,0 +1,13 @@
+#nav-container {
+  display: flex;
+  justify-content: space-evenly;
+
+  background-color: antiquewhite;
+  border-bottom: 2px solid rgb(223, 204, 180);
+  box-shadow: 0 10px 0 0 rgb(62, 102, 104);
+}
+
+#nav-div {
+  display: flex;
+  justify-content: center;
+}
