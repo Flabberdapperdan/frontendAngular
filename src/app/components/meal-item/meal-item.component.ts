@@ -7,9 +7,11 @@ import { Meal } from 'src/app/Meal';
   styleUrls: ['./meal-item.component.css'],
 })
 export class MealItemComponent implements OnInit {
-  @Input() meal: Meal | undefined;
+  @Input() meal: Meal;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.meal.naam);
+  }
 }
