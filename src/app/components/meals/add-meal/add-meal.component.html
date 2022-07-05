@@ -1,0 +1,12 @@
+<form *ngIf="showAddMeal" class="add-meal-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label for="text">Naam</label>
+    <input
+      type="text"
+      name="naam"
+      id="naam"
+      ngModel="naam"
+      placeholder="Naam Toevoegen"
+    />
+  </div>
+</form>

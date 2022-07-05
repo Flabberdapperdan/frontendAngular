@@ -3,8 +3,8 @@
   justify-content: space-evenly;
 
   background-color: antiquewhite;
-  border-bottom: 2px solid rgb(223, 204, 180);
-  box-shadow: 0 10px 0 0 rgb(62, 102, 104);
+  border-bottom: 1px solid rgb(121, 121, 121);
+  box-shadow: 0 1px 3px 3px rgba(71, 71, 71, 0.329);
 }
 
 #nav-div {

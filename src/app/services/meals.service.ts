@@ -11,11 +11,17 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class MealsService {
-  private apiUrl = 'http://localhost:8082/overzichtmaaltijden';
+  private apiUrl =
+    'https://jc2206javabackend.azurewebsites.net/overzichtmaaltijden  ';
+  private postUrl = '';
 
   constructor(private http: HttpClient) {}
 
   getMeals(): Observable<Meal[]> {
     return this.http.get<Meal[]>(this.apiUrl);
+  }
+
+  safeMeal(): void {
+    //return this.http.post
   }
 }
