@@ -38,4 +38,8 @@ export class MealsComponent implements OnInit {
   toggleAddMeal() {
     this.uiService.toggleAddMeal();
   }
+
+  addMeal(meal: Meal) {
+    this.mealsService.addMeal(meal).subscribe((meal) => this.meals.push(meal));
+  }
 }

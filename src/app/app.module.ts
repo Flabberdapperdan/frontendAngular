@@ -10,6 +10,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { MealsComponent } from './components/meals/meals.component';
 import { MealItemComponent } from './components/meals/meal-item/meal-item.component';
 import { AddMealComponent } from './components/meals/add-meal/add-meal.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [{}];
 
@@ -22,7 +23,7 @@ const appRoutes: Routes = [{}];
     MealItemComponent,
     AddMealComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

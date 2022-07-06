@@ -5,9 +5,7 @@
       text="{{ showAddMeal ? 'Close' : 'Add' }}"
       (btnClick)="toggleAddMeal()"
     ></app-button>
-    <div class="new-meal-form">
-      <app-add-meal></app-add-meal>
-    </div>
+    <app-add-meal (onAddMeal)="addMeal($event)"></app-add-meal>
   </div>
   <app-meal-item *ngFor="let meal of meals" [meal]="meal"></app-meal-item>
 </div>

@@ -3,10 +3,41 @@
     <label for="text">Naam</label>
     <input
       type="text"
-      name="naam"
-      id="naam"
-      ngModel="naam"
+      name="name"
+      id="name"
+      [(ngModel)]="name"
       placeholder="Naam Toevoegen"
     />
   </div>
+  <div class="form-control">
+    <label for="text">Beschrijving</label>
+    <input
+      type="text"
+      name="description"
+      id="description"
+      [(ngModel)]="description"
+      placeholder="Beschrijving Toevoegen"
+    />
+  </div>
+  <div class="form-control">
+    <label for="text">Calorieen</label>
+    <input
+      type="number"
+      name="calories"
+      id="calories"
+      [(ngModel)]="calories"
+      placeholder="Calorieen Toevoegen"
+    />
+  </div>
+  <div class="form-control">
+    <label for="text">Prijs</label>
+    <input
+      type="number"
+      name="price"
+      id="price"
+      [(ngModel)]="price"
+      placeholder="Prijs Toevoegen"
+    />
+  </div>
+  <input type="submit" value="Maaltijd Opslaan" class="btn btn-block" />
 </form>
