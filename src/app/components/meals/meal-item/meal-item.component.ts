@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Meal } from 'src/app/Meal';
+import { Meal } from 'src/app/Models/Meal';
 
 @Component({
   selector: 'app-meal-item',

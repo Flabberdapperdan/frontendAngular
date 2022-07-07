@@ -1,0 +1,63 @@
+<h1>Restaurants</h1>
+
+<button class="btn btn-primary" type="button" (click)="voegToeWeergeven()">
+    Voeg toe
+</button>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Adres</th>
+            <th>Bezorger</th>
+            <th>Cuisine</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let restaurant of restaurants">
+            <td>{{ restaurant.id }}</td>
+            <td>{{ restaurant.adres }}</td>
+            <td>{{ restaurant.bezorger }}</td>
+            <td>{{ restaurant.cuisine }}</td>
+            <td>
+                <button class="btn btn-danger" type="button" (click)="delete(restaurant)">
+                    Verwijderen
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<app-modal modalId="addrestaurant" title="Voeg restaurant toe">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <label for="naam" class="form-label">Naam</label>
+                <input [(ngModel)]="naam" type="text" class="form-control" id="naam" aria-describedby="naamHelp">
+                <div id="naamHelp" class="form-text">Vul hier de naam in van het restaurant.</div>
+            </div>
+            <div class="col-12">
+                <label for="adres" class="form-label">Adres</label>
+                <input [(ngModel)]="adres" type="text" class="form-control" id="adres" aria-describedby="adresHelp">
+                <div id="adresHelp" class="form-text">Vul hier het adres in van het restaurant.</div>
+            </div>
+            <div class="col-12">
+                <label for="cuisine" class="form-label">Cuisine</label>
+                <input [(ngModel)]="cuisine" type="text" class="form-control" id="cuisine" aria-describedby="cuisineHelp">
+                <div id="cuisineHelp" class="form-text">Vul hier het cuisine in van het restaurant.</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button type="button" class="btn btn-danger" (click)="close()">
+                    Sluiten
+                </button>
+            </div>
+            <div class="col-6 text-end">
+                <button type="button" class="btn btn-primary" (click)="save()">
+                    Opslaan
+                </button>
+            </div>
+        </div>
+    </div>
+</app-modal>

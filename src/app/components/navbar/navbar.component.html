@@ -1,10 +1,18 @@
 <div id="nav-container">
-  <app-button id="home-button" text="home" color="red"></app-button>
+  <app-button 
+    id="home-button"
+    text="home"
+    color="red"
+    (btnClick)="gaNaarHome()"
+   >
+
+  </app-button>
   <div id="nav-div">
     <app-button
       id="restuarant-button"
       text="restaurants"
       color="red"
+      (btnClick)="gaNaarRestaurants()"
     ></app-button>
     <app-button
       id="winkelmandje-button"

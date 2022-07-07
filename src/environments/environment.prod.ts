@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://jc2206javabackend.azurewebsites.net'
 };

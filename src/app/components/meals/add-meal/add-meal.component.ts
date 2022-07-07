@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Meal } from 'src/app/Meal';
+import { Meal } from 'src/app/Models/Meal';
 import { UiService } from '../../../services/ui.service';
 
 @Component({

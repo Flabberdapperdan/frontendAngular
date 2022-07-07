@@ -2,5 +2,17 @@
   <app-navbar></app-navbar>
 </header>
 <main>
-  <app-meals></app-meals>
+  <router-outlet></router-outlet>
+
+  <app-messagemodal modalId="model-1" message="Dit is mijn bericht 1" title="Bericht 1" cancelMessage="Annuleren" actionMessage="Save">
+  </app-messagemodal>
+
+  <app-modal modalId="model-2" title="2de modal">
+    <app-qr-code [qrCode]="title" [scale]="8"></app-qr-code>
+  </app-modal>
+
+  <button type="button" (click)="showModal()">
+    Laat zien
+  </button>
+
 </main>
