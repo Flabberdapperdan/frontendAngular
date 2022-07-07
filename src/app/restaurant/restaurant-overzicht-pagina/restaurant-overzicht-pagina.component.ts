@@ -51,6 +51,10 @@ export class RestaurantOverzichtPaginaComponent implements OnInit {
     restaurant.bezorger = 1;
 
     this.restaurantsService.add(restaurant).subscribe( response => {
+      this.naam = '';
+      this.adres = '';
+      this.cuisine = '';
+
       this.close();
       this.searchRestaurants();
     });
