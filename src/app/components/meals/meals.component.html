@@ -1,3 +1,11 @@
 <div class="meals-container">
+  <div class="new-meal-container">
+    <app-button
+      color="{{ showAddMeal ? 'red' : 'green' }}"
+      text="{{ showAddMeal ? 'Close' : 'Add' }}"
+      (btnClick)="toggleAddMeal()"
+    ></app-button>
+    <app-add-meal (onAddMeal)="addMeal($event)"></app-add-meal>
+  </div>
   <app-meal-item *ngFor="let meal of meals" [meal]="meal"></app-meal-item>
 </div>

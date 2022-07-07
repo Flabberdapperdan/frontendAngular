@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from '../../services/ui.service';
 import { MealsService } from '../../services/meals.service';
 import { Meal } from 'src/app/Meal';
+import { connect, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-meals',
@@ -9,8 +11,17 @@ import { Meal } from 'src/app/Meal';
 })
 export class MealsComponent implements OnInit {
   meals: Meal[] = [];
+  subscription: Subscription;
+  showAddMeal: boolean = false;
 
-  constructor(private mealsService: MealsService) {}
+  constructor(
+    private mealsService: MealsService,
+    private uiService: UiService
+  ) {
+    this.subscription = this.uiService
+      .onToggle()
+      .subscribe((value) => (this.showAddMeal = value));
+  }
 
   ngOnInit(): void {
     console.log('i am initializing');
@@ -19,6 +30,16 @@ export class MealsComponent implements OnInit {
       this.meals = meals;
     });
   }
-}
+  ngOnDestroy() {
+    // Unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+  }
 
-//   this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+  toggleAddMeal() {
+    this.uiService.toggleAddMeal();
+  }
+
+  addMeal(meal: Meal) {
+    this.mealsService.addMeal(meal).subscribe((meal) => this.meals.push(meal));
+  }
+}
