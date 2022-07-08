@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UiService } from '../../services/ui.service';
-import { MealsService } from '../../services/meals.service';
+import { UiService } from '../services/ui.service';
+import { MealsService } from '../services/meals.service';
 import { Meal } from 'src/app/Models/Meal';
 import { connect, Subscription } from 'rxjs';
 
