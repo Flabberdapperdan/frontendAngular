@@ -2,17 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { ButtonComponent } from './components/button/button.component';
 import { FormsModule } from '@angular/forms';
-import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
-import { QrCodeComponent } from './components/qr-code/qr-code.component';
+
 import { RestaurantModule } from './restaurant/restaurant.module';
-import { ComponentenModule } from './componenten/componenten.module';
-import { mealsModule } from './meals/meals.module';
+import { ComponentsModule } from './components/components.module';
+import { MealsModule } from './meals/meals.module';
+
+import { AppComponent } from './app.component';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { NavbarModule } from './navbar/navbar.module';
 
 const routes: Routes = [
   {
@@ -23,17 +22,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./meals/meals.module').then((m) => m.mealsModule),
+      import('./meals/meals.module').then((m) => m.MealsModule),
   },
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    ButtonComponent,
-    QrCodeComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,8 +35,9 @@ const routes: Routes = [
     FormsModule,
     NgxQRCodeModule,
     RestaurantModule,
-    mealsModule,
-    ComponentenModule,
+    MealsModule,
+    NavbarModule,
+    ComponentsModule,
     RouterModule.forRoot(routes),
   ],
   providers: [],
