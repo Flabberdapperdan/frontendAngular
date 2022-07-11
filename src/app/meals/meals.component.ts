@@ -18,17 +18,18 @@ export class MealsComponent implements OnInit {
     private mealsService: MealsService,
     private uiService: UiService
   ) {
-    this.subscription = this.uiService
-      .onToggle()
-      .subscribe((value) => (this.showAddMeal = value));
+    this.subscription = this.uiService.onToggle().subscribe((value) => {
+      this.showAddMeal = value;
+      console.log(value);
+    });
   }
 
   ngOnInit(): void {
-    console.log('i am initializing');
     this.mealsService.getMeals().subscribe((meals) => {
       console.log(meals);
       this.meals = meals;
     });
+    console.log(this.showAddMeal);
   }
   ngOnDestroy() {
     // Unsubscribe to ensure no memory leaks

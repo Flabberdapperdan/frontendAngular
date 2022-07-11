@@ -12,8 +12,13 @@ import { MealsModule } from './meals/meals.module';
 import { AppComponent } from './app.component';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { NavbarModule } from './navbar/navbar.module';
+import { HomeModule } from './home/home.module';
 
 const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
   {
     path: '',
     loadChildren: () =>
@@ -37,6 +42,7 @@ const routes: Routes = [
     RestaurantModule,
     MealsModule,
     NavbarModule,
+    HomeModule,
     ComponentsModule,
     RouterModule.forRoot(routes),
   ],

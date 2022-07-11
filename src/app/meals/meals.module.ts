@@ -8,8 +8,15 @@ import { MealItemComponent } from './meal-item/meal-item.component';
 import { ComponentsModule } from '../components/components.module';
 import { MealsComponent } from './meals.component';
 
+const routes: Routes = [{ path: 'meals', component: MealsComponent }];
+
 @NgModule({
   declarations: [AddMealComponent, MealItemComponent, MealsComponent],
-  imports: [CommonModule, ComponentsModule, FormsModule],
+  imports: [
+    CommonModule,
+    ComponentsModule,
+    FormsModule,
+    RouterModule.forChild(routes),
+  ],
 })
 export class MealsModule {}

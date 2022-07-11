@@ -16,7 +16,7 @@ export class AddMealComponent implements OnInit {
   price: number;
 
   subscription: Subscription;
-  showAddMeal: boolean = true;
+  showAddMeal: boolean = false;
 
   constructor(private uiService: UiService) {
     this.subscription = this.uiService
