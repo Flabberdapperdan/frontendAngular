@@ -7,5 +7,28 @@
     ></app-button>
     <app-add-meal (onAddMeal)="addMeal($event)"></app-add-meal>
   </div>
-  <app-meal-item *ngFor="let meal of meals" [meal]="meal"></app-meal-item>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Beschrijving</th>
+        <th>Calorieen</th>
+        <th>Prijs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let meal of meals">
+        <td>{{ meal.id }}</td>
+        <td>{{ meal.beschrijving }}</td>
+        <td>{{ meal.calorieen }}</td>
+        <td>{{ meal.prijs }}</td>
+        <td>
+          <button class="btn btn-danger" type="button" (click)="delete(meal)">
+            Verwijderen
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

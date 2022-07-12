@@ -43,4 +43,6 @@ export class MealsComponent implements OnInit {
   addMeal(meal: Meal) {
     this.mealsService.addMeal(meal).subscribe((meal) => this.meals.push(meal));
   }
+
+  delete(meal: Meal) {}
 }
