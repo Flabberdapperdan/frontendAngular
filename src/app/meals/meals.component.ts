@@ -44,5 +44,10 @@ export class MealsComponent implements OnInit {
     this.mealsService.addMeal(meal).subscribe((meal) => this.meals.push(meal));
   }
 
-  delete(meal: Meal) {}
+  delete(meal: Meal) {
+    this.mealsService.deleteMeal(meal).subscribe(() => {
+      let index = this.meals.findIndex((element) => element.id == meal.id);
+      this.meals.splice(index, 1);
+    });
+  }
 }
