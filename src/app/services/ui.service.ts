@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class UiService {
   private showAddMeal: boolean = false;
   private subject = new Subject<any>();
+  private restaurantId: number;
 
   constructor() {}
 
@@ -14,8 +15,9 @@ export class UiService {
     this.showAddMeal = !this.showAddMeal;
     this.subject.next(this.showAddMeal);
   }
-
   onToggle(): Observable<any> {
     return this.subject.asObservable();
   }
+
+  setRestuarantId() {}
 }

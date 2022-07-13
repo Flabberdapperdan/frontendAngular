@@ -4,4 +4,5 @@ export interface Meal {
   beschrijving: string;
   calorieen: number;
   prijs: number;
+  restaurantId: number;
 }

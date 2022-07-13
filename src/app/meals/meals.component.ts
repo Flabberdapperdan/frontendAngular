@@ -36,14 +36,13 @@ export class MealsComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+  // API-calls \\
   toggleAddMeal() {
     this.uiService.toggleAddMeal();
   }
-
   addMeal(meal: Meal) {
     this.mealsService.addMeal(meal).subscribe((meal) => this.meals.push(meal));
   }
-
   delete(meal: Meal) {
     this.mealsService.deleteMeal(meal).subscribe(() => {
       let index = this.meals.findIndex((element) => element.id == meal.id);

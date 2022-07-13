@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Meal } from 'src/app/Models/Meal';
+import { Restaurant } from 'src/app/Models/Restaurant';
 import { UiService } from '../../services/ui.service';
+import { RestaurantsService } from 'src/app/services/restaurants.service';
 
 @Component({
   selector: 'app-add-meal',
@@ -14,21 +16,36 @@ export class AddMealComponent implements OnInit {
   description: string;
   calories: number;
   price: number;
+  restaurantId: number;
+
+  restaurants: Restaurant[] = [];
 
   subscription: Subscription;
   showAddMeal: boolean = false;
 
-  constructor(private uiService: UiService) {
+  constructor(
+    private uiService: UiService,
+    private restaurantsService: RestaurantsService
+  ) {
     this.subscription = this.uiService
       .onToggle()
       .subscribe((value) => (this.showAddMeal = value));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.restaurantsService.getAll().subscribe((restaurants) => {
+      console.log(restaurants);
+      this.restaurants = restaurants;
+    });
+  }
 
   onSubmit() {
+    alert(this.restaurantId);
     if (!this.name) {
       alert('Voeg een naam van het gerecht toe.');
+      return;
+    } else if (!this.restaurantId) {
+      alert('Voeg een restaurant van het gerecht toe.');
       return;
     }
 
@@ -37,6 +54,7 @@ export class AddMealComponent implements OnInit {
       beschrijving: this.description,
       calorieen: this.calories,
       prijs: this.price,
+      restaurantId: this.restaurantId,
     };
 
     this.onAddMeal.emit(newMeal);
