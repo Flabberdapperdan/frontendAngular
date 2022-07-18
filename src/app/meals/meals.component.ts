@@ -17,6 +17,8 @@ export class MealsComponent implements OnInit {
   showAddMeal: boolean = false;
   restaurantId: number;
 
+  //noMeals: boolean = true;
+
   constructor(
     private mealsService: MealsService,
     private uiService: UiService,
@@ -25,7 +27,6 @@ export class MealsComponent implements OnInit {
 
   ngOnInit(): void {
     this.restaurantId = this.activatedRoute.snapshot.params['id'];
-
     this.uiSubscription = this.uiService
       .onToggle()
       .subscribe((value) => (this.showAddMeal = value));
@@ -34,7 +35,6 @@ export class MealsComponent implements OnInit {
   ngOnDestroy() {
     // Unsubscribe to ensure no memory leaks
     this.uiSubscription.unsubscribe();
-    this.mealsSubscription.unsubscribe();
   }
 
   toggleAddMeal() {
@@ -43,20 +43,11 @@ export class MealsComponent implements OnInit {
 
   // API-calls \\
   getMeals(): void {
-    if (this.restaurantId) {
-      this.mealsService
-        .getMealsByRestaurant(this.restaurantId)
-        .subscribe((meals) => {
-          console.log(meals);
-          this.meals = meals;
-          alert('dit zijn de meals: ' + this.meals);
-        });
-    } else {
-      this.mealsService.getMeals().subscribe((meals) => {
-        console.log(meals);
+    this.mealsService
+      .getMealsByRestaurant(this.restaurantId)
+      .subscribe((meals) => {
         this.meals = meals;
       });
-    }
   }
   addMeal(meal: Meal) {
     this.mealsService.addMeal(meal).subscribe((meal) => this.meals.push(meal));

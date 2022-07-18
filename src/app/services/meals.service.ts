@@ -32,7 +32,7 @@ export class MealsService {
   }
   getMealsByRestaurant(id: number): Observable<Meal[]> {
     return this.http.get<Meal[]>(
-      environment.apiUrl + 'overzichtmaaltijden/restaurant/' + id
+      environment.apiUrl + '/overzichtmaaltijden/restaurant/' + id
     );
   }
   addMeal(meal: Meal): Observable<Meal> {
