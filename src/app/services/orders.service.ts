@@ -13,13 +13,13 @@ export class OrdersService {
   // API CALLES \\
   get(id: number) {
     return this.http.get<Order[]>(
-      environment.apiUrl + '/overzichtbestellingen'
+      environment.apiUrl + '/overzichtbestellingen/restaurant/' + id
     );
   }
 
   delete(id: number) {
     return this.http.delete<Order>(
-      environment.apiUrl + '/verwijderbestelling' + id
+      environment.apiUrl + '/verwijderbestelling/' + id
     );
   }
 }

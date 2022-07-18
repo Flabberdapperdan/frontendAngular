@@ -1,5 +1,5 @@
 export interface Order {
-  id?: number;
+  id: number;
   totaal_prijs: number;
   betaald: boolean;
   status: string;

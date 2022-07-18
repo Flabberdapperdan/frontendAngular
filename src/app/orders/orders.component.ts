@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Order } from '../Models/Order';
 import { OrdersService } from '../services/orders.service';
 
@@ -9,11 +10,15 @@ import { OrdersService } from '../services/orders.service';
 })
 export class OrdersComponent implements OnInit {
   orders: Order[] = [];
-  restaurantId: number = 0;
+  restaurantId: number;
 
-  constructor(private ordersService: OrdersService) {}
+  constructor(
+    private ordersService: OrdersService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.restaurantId = this.activatedRoute.snapshot.params['id'];
     this.getOrders();
   }
 
@@ -24,9 +29,8 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  delete(): void {
-    this.ordersService.delete(this.restaurantId).subscribe((order) => {
-      console.log(order);
+  delete(order: Order): void {
+    this.ordersService.delete(order.id).subscribe(() => {
       let index = this.orders.findIndex((element) => element.id == order.id);
       this.orders.splice(index, 1);
     });

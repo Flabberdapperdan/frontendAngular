@@ -9,7 +9,10 @@ import { RestaurantsService } from 'src/app/services/restaurants.service';
 @Component({
   selector: 'app-restaurant-overzicht-pagina',
   templateUrl: './restaurant-overzicht-pagina.component.html',
-  styleUrls: ['./restaurant-overzicht-pagina.component.css'],
+  styleUrls: [
+    './restaurant-overzicht-pagina.component.css',
+    '../../app.component.css',
+  ],
 })
 export class RestaurantOverzichtPaginaComponent implements OnInit {
   naam: string;
@@ -38,6 +41,10 @@ export class RestaurantOverzichtPaginaComponent implements OnInit {
   goToMeals(id: number): void {
     //this.mealsService.setRestaurantId(id);
     this.router.navigateByUrl('/meals/' + id);
+  }
+  goToOrders(id: number): void {
+    //this.mealsService.setRestaurantId(id);
+    this.router.navigateByUrl('/orders/' + id);
   }
 
   showAdd() {
