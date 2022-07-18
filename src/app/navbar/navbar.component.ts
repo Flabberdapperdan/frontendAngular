@@ -22,4 +22,8 @@ export class NavbarComponent implements OnInit {
   goToMeals() {
     this.router.navigateByUrl('/meals');
   }
+
+  goToOrders() {
+    this.router.navigateByUrl('/orders');
+  }
 }

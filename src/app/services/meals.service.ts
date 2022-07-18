@@ -12,19 +12,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class MealsService {
-  private restaurantId: number;
-  private subject = new Subject<any>();
-
   constructor(private http: HttpClient) {}
-
-  setRestaurantId(inputId: number): void {
-    this.restaurantId = inputId;
-    this.subject.next(this.restaurantId);
-    alert('this is the id in the service: ' + this.restaurantId);
-  }
-  onSetRestaurantId(): Observable<any> {
-    return this.subject.asObservable();
-  }
 
   // API CALLS \\
   getMeals(): Observable<Meal[]> {

@@ -32,10 +32,6 @@ export class MealsComponent implements OnInit {
       .subscribe((value) => (this.showAddMeal = value));
     this.getMeals();
   }
-  ngOnDestroy() {
-    // Unsubscribe to ensure no memory leaks
-    this.uiSubscription.unsubscribe();
-  }
 
   toggleAddMeal() {
     this.uiService.toggleAddMeal();

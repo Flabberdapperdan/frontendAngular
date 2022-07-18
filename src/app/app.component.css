@@ -3,3 +3,12 @@ btn-primary {
   border: 0px !important;
   border-color: none !important;
 }
+
+.results-container {
+  margin: 15px 10vw;
+  padding: 20px 10px;
+
+  background-color: rgba(214, 214, 214, 0.425);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 1px rgba(75, 75, 75, 0.164);
+}

@@ -2,7 +2,7 @@
   <div class="new-meal-container">
     <app-button
       color="{{ showAddMeal ? 'red' : 'green' }}"
-      text="{{ showAddMeal ? 'Close' : 'Add' }}"
+      text="{{ showAddMeal ? 'Sluiten' : 'Toevoegen' }}"
       (btnClick)="toggleAddMeal()"
     ></app-button>
     <app-add-meal (onAddMeal)="addMeal($event)"></app-add-meal>
