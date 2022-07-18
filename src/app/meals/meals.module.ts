@@ -7,7 +7,7 @@ import { AddMealComponent } from './add-meal/add-meal.component';
 import { ComponentsModule } from '../components/components.module';
 import { MealsComponent } from './meals.component';
 
-const routes: Routes = [{ path: 'meals', component: MealsComponent }];
+const routes: Routes = [{ path: 'meals/:id', component: MealsComponent }];
 
 @NgModule({
   declarations: [AddMealComponent, MealsComponent],

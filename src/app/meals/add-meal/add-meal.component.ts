@@ -40,7 +40,6 @@ export class AddMealComponent implements OnInit {
   }
 
   onSubmit() {
-    alert(this.restaurantId);
     if (!this.name) {
       alert('Voeg een naam van het gerecht toe.');
       return;

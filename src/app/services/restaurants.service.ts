@@ -13,19 +13,25 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class RestaurantsService {
-
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(environment.apiUrl + '/overzichtrestaurants');
+    return this.http.get<Restaurant[]>(
+      environment.apiUrl + '/overzichtrestaurants'
+    );
   }
 
   add(restaurant: Restaurant): Observable<Restaurant> {
-    return this.http.post<Restaurant>(environment.apiUrl + '/restaurantinvoeren', restaurant, httpOptions);
+    return this.http.post<Restaurant>(
+      environment.apiUrl + '/restaurantinvoeren',
+      restaurant,
+      httpOptions
+    );
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(environment.apiUrl + '/resturant/' + id);
+    return this.http.delete<void>(
+      environment.apiUrl + '/verwijderrestaurant/' + id
+    );
   }
-
 }

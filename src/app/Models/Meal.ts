@@ -5,4 +5,5 @@ export interface Meal {
   calorieen: number;
   prijs: number;
   restaurantId: number;
+  restaurantNaam?: string;
 }

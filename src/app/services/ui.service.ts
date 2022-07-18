@@ -18,6 +18,4 @@ export class UiService {
   onToggle(): Observable<any> {
     return this.subject.asObservable();
   }
-
-  setRestuarantId() {}
 }

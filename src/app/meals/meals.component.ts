@@ -3,6 +3,7 @@ import { UiService } from '../services/ui.service';
 import { MealsService } from '../services/meals.service';
 import { Meal } from 'src/app/Models/Meal';
 import { connect, Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-meals',
@@ -11,34 +12,51 @@ import { connect, Subscription } from 'rxjs';
 })
 export class MealsComponent implements OnInit {
   meals: Meal[] = [];
-  subscription: Subscription;
+  uiSubscription: Subscription;
+  mealsSubscription: Subscription;
   showAddMeal: boolean = false;
+  restaurantId: number;
 
   constructor(
     private mealsService: MealsService,
-    private uiService: UiService
-  ) {
-    this.subscription = this.uiService.onToggle().subscribe((value) => {
-      this.showAddMeal = value;
-      console.log(value);
-    });
-  }
+    private uiService: UiService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.mealsService.getMeals().subscribe((meals) => {
-      console.log(meals);
-      this.meals = meals;
-    });
-    console.log(this.showAddMeal);
+    this.restaurantId = this.activatedRoute.snapshot.params['id'];
+
+    this.uiSubscription = this.uiService
+      .onToggle()
+      .subscribe((value) => (this.showAddMeal = value));
+    this.getMeals();
   }
   ngOnDestroy() {
     // Unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
+    this.uiSubscription.unsubscribe();
+    this.mealsSubscription.unsubscribe();
+  }
+
+  toggleAddMeal() {
+    this.uiService.toggleAddMeal();
   }
 
   // API-calls \\
-  toggleAddMeal() {
-    this.uiService.toggleAddMeal();
+  getMeals(): void {
+    if (this.restaurantId) {
+      this.mealsService
+        .getMealsByRestaurant(this.restaurantId)
+        .subscribe((meals) => {
+          console.log(meals);
+          this.meals = meals;
+          alert('dit zijn de meals: ' + this.meals);
+        });
+    } else {
+      this.mealsService.getMeals().subscribe((meals) => {
+        console.log(meals);
+        this.meals = meals;
+      });
+    }
   }
   addMeal(meal: Meal) {
     this.mealsService.addMeal(meal).subscribe((meal) => this.meals.push(meal));

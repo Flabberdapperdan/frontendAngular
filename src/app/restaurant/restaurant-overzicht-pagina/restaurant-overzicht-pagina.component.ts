@@ -1,48 +1,59 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Restaurant } from 'src/app/Models/Restaurant';
+import { MealsService } from 'src/app/services/meals.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
 
 @Component({
   selector: 'app-restaurant-overzicht-pagina',
   templateUrl: './restaurant-overzicht-pagina.component.html',
-  styleUrls: ['./restaurant-overzicht-pagina.component.css']
+  styleUrls: ['./restaurant-overzicht-pagina.component.css'],
 })
 export class RestaurantOverzichtPaginaComponent implements OnInit {
-
   naam: string;
   adres: string;
   cuisine: string;
 
   restaurants: Restaurant[] = [];
 
-  constructor(private restaurantsService: RestaurantsService, private modalService: ModalService) { }
+  constructor(
+    private restaurantsService: RestaurantsService,
+    private modalService: ModalService,
+    private mealsService: MealsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.searchRestaurants();
   }
 
-  searchRestaurants() {
-    this.restaurantsService.getAll().subscribe( restaurants => {
+  searchRestaurants(): void {
+    this.restaurantsService.getAll().subscribe((restaurants) => {
       this.restaurants = restaurants;
-    })
+    });
   }
 
-  voegToeWeergeven() {
+  goToMeals(id: number): void {
+    //this.mealsService.setRestaurantId(id);
+    this.router.navigateByUrl('/meals/' + id);
+  }
+
+  showAdd() {
     this.modalService.show('addrestaurant');
   }
-
   close() {
     this.modalService.hide('addrestaurant');
   }
 
-  delete(restaurant: Restaurant) {
-    this.restaurantsService.delete(restaurant.id).subscribe( response => {
+  // API CALLS \\
+  delete(restaurant: Restaurant): void {
+    this.restaurantsService.delete(restaurant.id).subscribe((response) => {
       this.searchRestaurants();
     });
   }
-
-  save() {
+  save(): void {
     var restaurant = new Restaurant();
     restaurant.naam = this.naam;
     restaurant.adres = this.adres;
@@ -50,7 +61,7 @@ export class RestaurantOverzichtPaginaComponent implements OnInit {
     restaurant.geopend = true;
     restaurant.bezorger = 1;
 
-    this.restaurantsService.add(restaurant).subscribe( response => {
+    this.restaurantsService.add(restaurant).subscribe((response) => {
       this.naam = '';
       this.adres = '';
       this.cuisine = '';
@@ -59,5 +70,4 @@ export class RestaurantOverzichtPaginaComponent implements OnInit {
       this.searchRestaurants();
     });
   }
-
 }

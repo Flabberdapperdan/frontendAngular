@@ -1,6 +1,6 @@
 <h1>Restaurants</h1>
 
-<button class="btn btn-primary" type="button" (click)="voegToeWeergeven()">
+<button class="btn btn-primary" type="button" (click)="showAdd()">
   Voeg toe
 </button>
 
@@ -16,6 +16,7 @@
   <tbody>
     <tr *ngFor="let restaurant of restaurants">
       <td>{{ restaurant.id }}</td>
+      <td>{{ restaurant.naam }}</td>
       <td>{{ restaurant.adres }}</td>
       <td>{{ restaurant.bezorger }}</td>
       <td>{{ restaurant.cuisine }}</td>
@@ -26,6 +27,13 @@
           (click)="delete(restaurant)"
         >
           Verwijderen
+        </button>
+        <button
+          class="btn btn-info"
+          type="button"
+          (click)="goToMeals(restaurant.id)"
+        >
+          Maaltijden
         </button>
       </td>
     </tr>
