@@ -1,5 +1,5 @@
 <div class="orders-container results-container">
-  <h2>Bestellingen</h2>
+  <h2>Bestellingen van: {{ restaurant.naam }}</h2>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -18,7 +18,11 @@
         <td>{{ order.status }}</td>
         <td>{{ order.opmerking }}</td>
         <td>
-          <button class="btn btn-danger" type="button" (click)="delete(order)">
+          <button
+            class="btn btn-danger"
+            type="button"
+            (click)="deleteOrder(order)"
+          >
             Verwijderen
           </button>
         </td>

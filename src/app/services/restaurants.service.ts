@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Meal } from '../Models/Meal';
 import { environment } from 'src/environments/environment';
 import { Restaurant } from '../Models/Restaurant';
 
