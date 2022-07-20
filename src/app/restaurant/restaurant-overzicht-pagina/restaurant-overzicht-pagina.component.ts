@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Restaurant } from 'src/app/Models/Restaurant';
 import { MealsService } from 'src/app/services/meals.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -32,12 +31,6 @@ export class RestaurantOverzichtPaginaComponent implements OnInit {
     this.searchRestaurants();
   }
 
-  searchRestaurants(): void {
-    this.restaurantsService.getAll().subscribe((restaurants) => {
-      this.restaurants = restaurants;
-    });
-  }
-
   goToMeals(id: number): void {
     //this.mealsService.setRestaurantId(id);
     this.router.navigateByUrl('/meals/' + id);
@@ -55,6 +48,11 @@ export class RestaurantOverzichtPaginaComponent implements OnInit {
   }
 
   // API CALLS \\
+  searchRestaurants(): void {
+    this.restaurantsService
+      .getAll()
+      .subscribe((restaurants) => (this.restaurants = restaurants));
+  }
   delete(restaurant: Restaurant): void {
     this.restaurantsService.delete(restaurant.id).subscribe((response) => {
       this.searchRestaurants();

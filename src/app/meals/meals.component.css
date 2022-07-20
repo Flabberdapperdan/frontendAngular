@@ -17,3 +17,9 @@
 tbody:last-child {
   border-bottom: 0px inherit;
 }
+
+#meal-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

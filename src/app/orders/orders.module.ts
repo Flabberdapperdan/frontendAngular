@@ -4,7 +4,10 @@ import { OrdersComponent } from './orders/orders.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AddOrderComponent } from './add-order/add-order.component';
 
-const routes: Routes = [{ path: 'orders/:id', component: OrdersComponent }];
+const routes: Routes = [
+  { path: 'orders/:restaurantId', component: OrdersComponent },
+  { path: 'orders/:restaurantId/:mealId', component: AddOrderComponent },
+];
 
 @NgModule({
   declarations: [OrdersComponent, AddOrderComponent],

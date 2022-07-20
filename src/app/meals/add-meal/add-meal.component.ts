@@ -1,9 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Meal } from 'src/app/Models/Meal';
-import { Restaurant } from 'src/app/Models/Restaurant';
 import { UiService } from '../../services/ui.service';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-meal',
@@ -16,16 +16,16 @@ export class AddMealComponent implements OnInit {
   description: string;
   calories: number;
   price: number;
-  restaurantId: number;
 
-  restaurants: Restaurant[] = [];
+  restaurantId: number;
+  @Input() restaurantName: string;
 
   subscription: Subscription;
   showAddMeal: boolean = false;
 
   constructor(
     private uiService: UiService,
-    private restaurantsService: RestaurantsService
+    private activatedRoute: ActivatedRoute
   ) {
     this.subscription = this.uiService
       .onToggle()
@@ -33,10 +33,7 @@ export class AddMealComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.restaurantsService.getAll().subscribe((restaurants) => {
-      console.log(restaurants);
-      this.restaurants = restaurants;
-    });
+    this.restaurantId = this.activatedRoute.snapshot.params['id'];
   }
 
   onSubmit() {
@@ -48,17 +45,26 @@ export class AddMealComponent implements OnInit {
       return;
     }
 
-    const newMeal: Meal = {
-      naam: this.name,
-      beschrijving: this.description,
-      calorieen: this.calories,
-      prijs: this.price,
-      restaurantId: this.restaurantId,
-    };
+    // const newMeal: Meal = {
+    //   naam: this.name,
+    //   beschrijving: this.description,
+    //   calorieen: this.calories,
+    //   prijs: this.price,
+    //   restaurantId: this.restaurantId,
+    // };
+
+    console.log(this.restaurantName);
+
+    let newMeal = new Meal();
+    newMeal.naam = this.name;
+    newMeal.beschrijving = this.description;
+    newMeal.prijs = this.price;
+    newMeal.restaurantId = this.restaurantId;
+
+    console.log(newMeal);
 
     this.onAddMeal.emit(newMeal);
 
-    console.log(newMeal);
     this.name = '';
     this.description = '';
     this.calories;

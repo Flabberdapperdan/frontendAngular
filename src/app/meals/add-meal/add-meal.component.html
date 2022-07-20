@@ -39,20 +39,6 @@
       placeholder="Prijs Toevoegen"
     />
   </div>
-  <div class="form-control">
-    <label for="text">Restaurant</label>
-    <select
-      type="option"
-      name="restaurantId"
-      id="restaurantId"
-      [(ngModel)]="restaurantId"
-      placeholder="Restaurant"
-    >
-      <option *ngFor="let restaurant of restaurants" [ngValue]="restaurant.id">
-        {{ restaurant.naam }}
-      </option>
-    </select>
-  </div>
   <button id="meal-submit-button" type="button" class="btn btn-primary">
     <input type="submit" value="Maaltijd Opslaan" class="btn btn-block" />
   </button>
