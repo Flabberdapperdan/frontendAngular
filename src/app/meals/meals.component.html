@@ -1,7 +1,7 @@
-<div class="orders-container">
-  <h3>{{ restaurantName }}</h3>
+<div class="meals-container">
+  <h3>{{ restaurantName ? restaurantName : "Loading..." }}</h3>
 
-  <div class="new-order-container">
+  <div class="new-meal-container">
     <app-button
       color="{{ showAddMeal ? 'red' : 'green' }}"
       text="{{ showAddMeal ? 'Sluiten' : 'Maaltijd Toevoegen' }}"
