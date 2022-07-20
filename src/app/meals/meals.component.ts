@@ -43,8 +43,8 @@ export class MealsComponent implements OnInit {
     this.uiService.toggleAddMeal();
   }
 
-  addToOrder(id: number) {
-    this.router.navigateByUrl(`/restaurants`);
+  addToOrder(mealId: number) {
+    this.router.navigateByUrl(`/orders/${this.restaurantId}/${mealId}`);
   }
 
   // API-calls \\
@@ -73,7 +73,7 @@ export class MealsComponent implements OnInit {
     await this.mealsService.addMeal(meal).subscribe();
     this.getMeals();
     console.log('we added a meal and get the new ones');
-    console.log(this.meals);
+    console.log(this.meals); //why does this not work?
     this.toggleAddMeal();
   }
   delete(meal: Meal) {

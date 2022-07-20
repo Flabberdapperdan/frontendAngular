@@ -22,9 +22,9 @@ export class OrdersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.restaurantId = this.activatedRoute.snapshot.params['id'];
-    this.getOrders();
+    this.restaurantId = this.activatedRoute.snapshot.params['restaurantId'];
     this.getRestaurant();
+    this.getOrders();
   }
 
   //API CALLS\\

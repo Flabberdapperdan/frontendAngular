@@ -1,4 +1,4 @@
-export interface Order {
+export class Order {
   id: number;
   totaal_prijs: number;
   betaald: boolean;

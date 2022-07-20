@@ -1,1 +1,22 @@
-<p>add-order works!</p>
+<div class="new-order-container">
+  <form class="add-meal-form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+      <label for="text">Opmerking</label>
+      <input
+        type="text"
+        name="comment"
+        id="name"
+        [(ngModel)]="comment"
+        placeholder="Naam Toevoegen"
+      />
+    </div>
+    <button
+      id="meal-submit-button"
+      type="button"
+      class="btn btn-primary"
+      (click)="onSubmit()"
+    >
+      Bestelling Bevestigen
+    </button>
+  </form>
+</div>

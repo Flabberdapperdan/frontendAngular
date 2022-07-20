@@ -1,7 +1,7 @@
-<div class="meals-container">
+<div class="orders-container">
   <h3>{{ restaurantName }}</h3>
 
-  <div class="new-meal-container">
+  <div class="new-order-container">
     <app-button
       color="{{ showAddMeal ? 'red' : 'green' }}"
       text="{{ showAddMeal ? 'Sluiten' : 'Maaltijd Toevoegen' }}"
@@ -36,7 +36,7 @@
             <button
               class="btn btn-primary"
               type="button"
-              (click)="addToOrder(6)"
+              (click)="addToOrder(meal.id)"
             >
               Bestellen
             </button>

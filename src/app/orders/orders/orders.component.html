@@ -1,5 +1,5 @@
 <div class="orders-container results-container">
-  <h2>Bestellingen van: {{ restaurant.naam }}</h2>
+  <h3>Bestellingen van: {{ restaurant ? restaurant.naam : "loading..." }}</h3>
   <table class="table table-striped">
     <thead>
       <tr>
