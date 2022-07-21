@@ -45,23 +45,11 @@ export class AddMealComponent implements OnInit {
       return;
     }
 
-    // const newMeal: Meal = {
-    //   naam: this.name,
-    //   beschrijving: this.description,
-    //   calorieen: this.calories,
-    //   prijs: this.price,
-    //   restaurantId: this.restaurantId,
-    // };
-
-    console.log(this.restaurantName);
-
     let newMeal = new Meal();
     newMeal.naam = this.name;
     newMeal.beschrijving = this.description;
     newMeal.prijs = this.price;
     newMeal.restaurantId = this.restaurantId;
-
-    console.log(newMeal);
 
     this.onAddMeal.emit(newMeal);
 

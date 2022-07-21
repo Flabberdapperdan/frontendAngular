@@ -20,8 +20,6 @@ export class MealsComponent implements OnInit {
   restaurantId: number;
   restaurantName: string;
 
-  //noMeals: boolean = true;
-
   constructor(
     private mealsService: MealsService,
     private restaurantsService: RestaurantsService,
@@ -69,19 +67,15 @@ export class MealsComponent implements OnInit {
         console.log(meals);
       });
   }
-  async addMeal(meal: Meal) {
-    await this.mealsService.addMeal(meal).subscribe();
-    this.getMeals();
-    console.log('we added a meal and get the new ones');
-    console.log(this.meals); //why does this not work?
-    this.toggleAddMeal();
+  addMeal(meal: Meal) {
+    this.mealsService.addMeal(meal).subscribe((res) => {
+      this.getMeals();
+      this.toggleAddMeal();
+    });
   }
   delete(meal: Meal) {
     this.mealsService.deleteMeal(meal).subscribe(() => {
-      let index = this.meals.findIndex((element) => element.id == meal.id);
-      this.meals.splice(index, 1);
+      this.getMeals();
     });
   }
 }
-
-// this.mealsService.addMeal(meal).subscribe((meal) => this.meals.push(meal));
