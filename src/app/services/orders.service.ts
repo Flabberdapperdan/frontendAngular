@@ -21,10 +21,15 @@ export class OrdersService {
     );
   }
 
-  post(order: Order, mealId: number, customerId: number) {
+  post(comment: string, mealId: number, customerId: number) {
+    let body = {
+      maaltijdId: mealId,
+      klantId: customerId,
+      opmerking: comment,
+    };
     return this.http.post<Order>(
-      environment.apiUrl + '/bestellinginvoeren/' + mealId + '/' + customerId,
-      order,
+      environment.apiUrl + `/bestellinginvoeren`,
+      body,
       httpOptions
     );
   }

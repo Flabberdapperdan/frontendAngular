@@ -1,7 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Meal } from 'src/app/Models/Meal';
 import { Order } from 'src/app/Models/Order';
+import { Restaurant } from 'src/app/Models/Restaurant';
+import { MealsService } from 'src/app/services/meals.service';
 import { OrdersService } from 'src/app/services/orders.service';
+import { RestaurantsService } from 'src/app/services/restaurants.service';
 
 @Component({
   selector: 'app-add-order',
@@ -13,11 +17,14 @@ export class AddOrderComponent implements OnInit {
   order: Order;
 
   restaurantId: number;
+  restaurant: Restaurant;
   mealId: number;
+  meal: Meal;
 
   constructor(
     private ordersService: OrdersService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +36,12 @@ export class AddOrderComponent implements OnInit {
     if (!this.comment) {
       alert('Voeg een opmerking toe');
     } else {
-      alert('we are submitting with: ' + this.comment);
+      this.ordersService
+        .post(this.comment, this.mealId, this.restaurantId)
+        .subscribe(() => {
+          alert('bestelling is gemaakt');
+          this.router.navigateByUrl(`meals/${this.restaurantId}`);
+        });
     }
   }
 }

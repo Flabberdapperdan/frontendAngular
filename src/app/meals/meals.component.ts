@@ -48,7 +48,6 @@ export class MealsComponent implements OnInit {
   // API-calls \\
   getRestaurantName = () => {
     this.restaurantsService.getAll().subscribe((restaurants) => {
-      console.log(restaurants);
       let index = restaurants.findIndex(
         (element) => element.id == this.restaurantId
       );
@@ -64,7 +63,6 @@ export class MealsComponent implements OnInit {
       .getMealsByRestaurant(this.restaurantId)
       .subscribe((meals) => {
         this.meals = meals;
-        console.log(meals);
       });
   }
   addMeal(meal: Meal) {
