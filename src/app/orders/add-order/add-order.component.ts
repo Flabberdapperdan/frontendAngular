@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Customer } from 'src/app/Models/Customer';
 import { Meal } from 'src/app/Models/Meal';
 import { Order } from 'src/app/Models/Order';
 import { Restaurant } from 'src/app/Models/Restaurant';
+import { CustomerService } from 'src/app/services/customer.service';
 import { MealsService } from 'src/app/services/meals.service';
 import { OrdersService } from 'src/app/services/orders.service';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
@@ -15,14 +17,14 @@ import { RestaurantsService } from 'src/app/services/restaurants.service';
 export class AddOrderComponent implements OnInit {
   comment: string;
   order: Order;
-
   restaurantId: number;
-  restaurant: Restaurant;
   mealId: number;
-  meal: Meal;
+  costumers: Customer[];
+  costumerId: number;
 
   constructor(
     private ordersService: OrdersService,
+    private customerService: CustomerService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
@@ -30,9 +32,13 @@ export class AddOrderComponent implements OnInit {
   ngOnInit(): void {
     this.restaurantId = this.activatedRoute.snapshot.params['restaurantId'];
     this.mealId = this.activatedRoute.snapshot.params['mealId'];
+    this.customerService.get().subscribe((customers) => {
+      this.costumers = customers;
+    });
   }
 
   onSubmit(): void {
+    alert(this.costumerId);
     if (!this.comment) {
       alert('Voeg een opmerking toe');
     } else {

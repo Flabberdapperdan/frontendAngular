@@ -10,6 +10,20 @@
         placeholder="Naam Toevoegen"
       />
     </div>
+    <div class="form-control">
+      <label for="text">Klant</label>
+      <select
+        type="dropdown"
+        name="klant"
+        id="customer"
+        [(ngModel)]="costumerId"
+        placeholder="Naam Toevoegen"
+      >
+        <option *ngFor="let customer of costumers" value="{{ customer.id }}">
+          {{ customer.naam }}
+        </option>
+      </select>
+    </div>
     <button
       id="meal-submit-button"
       type="button"
