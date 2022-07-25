@@ -37,7 +37,7 @@ export class RestaurantOverzichtPaginaComponent implements OnInit {
   }
   goToOrders(id: number): void {
     //this.mealsService.setRestaurantId(id);
-    this.router.navigateByUrl('/orders/' + id);
+    this.router.navigateByUrl('/orders/' + id + '?type=customer');
   }
 
   showAdd() {

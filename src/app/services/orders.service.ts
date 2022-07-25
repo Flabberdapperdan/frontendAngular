@@ -14,9 +14,14 @@ export class OrdersService {
   constructor(private http: HttpClient) {}
 
   // API CALLS \\
-  get(id: number) {
+  getByRestaurant(id: number) {
     return this.http.get<Order[]>(
       environment.apiUrl + '/overzichtbestellingen/restaurant/' + id
+    );
+  }
+  getByCustomer(id: number) {
+    return this.http.get<Order[]>(
+      environment.apiUrl + '/overzichtbestellingen/klant/' + id
     );
   }
 

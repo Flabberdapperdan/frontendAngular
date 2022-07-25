@@ -6,8 +6,8 @@ import { AddOrderComponent } from './add-order/add-order.component';
 import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: 'orders/:restaurantId', component: OrdersComponent },
-  { path: 'orders/:restaurantId/:mealId', component: AddOrderComponent },
+  { path: 'orders/:id', component: OrdersComponent },
+  { path: 'add-order/:restaurantId/:mealId', component: AddOrderComponent },
 ];
 
 @NgModule({

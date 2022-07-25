@@ -13,10 +13,18 @@
       color="orange"
       (btnClick)="goToRestaurants()"
     ></app-button>
-    <app-button
-      id="winkelmandje-button"
-      text="winkelmandje"
-      color="orange"
-    ></app-button>
+    <div id="nav-div">
+      <app-button
+        id="restuarant-button"
+        text="klanten"
+        color="orange"
+        (btnClick)="goToCustomers()"
+      ></app-button>
+      <app-button
+        id="winkelmandje-button"
+        text="winkelmandje"
+        color="orange"
+      ></app-button>
+    </div>
   </div>
 </div>
