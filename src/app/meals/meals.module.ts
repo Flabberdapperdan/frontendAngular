@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RestaurantOverzichtPaginaComponent } from './restaurant-overzicht-pagina/restaurant-overzicht-pagina.component';
+
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AddMealComponent } from './add-meal/add-meal.component';
 import { ComponentsModule } from '../components/components.module';
+import { MealsComponent } from './meals.component';
 
-const routes: Routes = [
-  { path: 'restaurants', component: RestaurantOverzichtPaginaComponent },
-];
+const routes: Routes = [{ path: 'meals/:id', component: MealsComponent }];
 
 @NgModule({
-  declarations: [RestaurantOverzichtPaginaComponent],
+  declarations: [AddMealComponent, MealsComponent],
   imports: [
     CommonModule,
     ComponentsModule,
@@ -18,4 +18,4 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
 })
-export class RestaurantModule {}
+export class MealsModule {}

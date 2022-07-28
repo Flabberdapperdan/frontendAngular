@@ -12,14 +12,27 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class MealsService {
-
   constructor(private http: HttpClient) {}
 
+  // API CALLS \\
   getMeals(): Observable<Meal[]> {
     return this.http.get<Meal[]>(environment.apiUrl + '/overzichtmaaltijden');
   }
-
+  getMealsByRestaurant(id: number): Observable<Meal[]> {
+    return this.http.get<Meal[]>(
+      environment.apiUrl + '/overzichtmaaltijden/restaurant/' + id
+    );
+  }
   addMeal(meal: Meal): Observable<Meal> {
-    return this.http.post<Meal>(environment.apiUrl + '/maaltijdinvoeren', meal, httpOptions);
+    return this.http.post<Meal>(
+      environment.apiUrl + '/maaltijdinvoeren',
+      meal,
+      httpOptions
+    );
+  }
+  deleteMeal(meal: Meal): Observable<Meal> {
+    return this.http.delete<Meal>(
+      environment.apiUrl + '/verwijdermaaltijd/' + meal.id
+    );
   }
 }

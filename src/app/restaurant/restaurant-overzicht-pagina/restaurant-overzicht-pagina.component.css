@@ -1,0 +1,9 @@
+restaurant-top {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+}

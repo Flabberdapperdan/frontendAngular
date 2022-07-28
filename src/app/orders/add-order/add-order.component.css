@@ -1,15 +1,15 @@
-.new-meal-container {
+.new-order-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
 
-.meals-container {
+.orders-container {
   margin: 15px 10vw;
   padding: 20px 10px;
 
-  background-color: rgba(143, 143, 143, 0.425);
+  background-color: rgba(214, 214, 214, 0.425);
   border-radius: 5px;
   box-shadow: 5px 5px 5px 1px rgba(75, 75, 75, 0.164);
 }

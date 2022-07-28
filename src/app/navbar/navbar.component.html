@@ -1,0 +1,30 @@
+<div id="nav-container">
+  <app-button
+    id="home-button"
+    text="home"
+    color="orange"
+    (btnClick)="goToHome()"
+  >
+  </app-button>
+  <div id="nav-div">
+    <app-button
+      id="restuarant-button"
+      text="restaurants"
+      color="orange"
+      (btnClick)="goToRestaurants()"
+    ></app-button>
+    <div id="nav-div">
+      <app-button
+        id="restuarant-button"
+        text="klanten"
+        color="orange"
+        (btnClick)="goToCustomers()"
+      ></app-button>
+      <app-button
+        id="winkelmandje-button"
+        text="winkelmandje"
+        color="orange"
+      ></app-button>
+    </div>
+  </div>
+</div>

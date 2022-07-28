@@ -1,0 +1,48 @@
+<div class="meals-container">
+  <h3>{{ restaurantName ? restaurantName : "Loading..." }}</h3>
+
+  <div class="new-meal-container">
+    <app-button
+      color="{{ showAddMeal ? 'red' : 'green' }}"
+      text="{{ showAddMeal ? 'Sluiten' : 'Maaltijd Toevoegen' }}"
+      (btnClick)="toggleAddMeal()"
+    ></app-button>
+    <app-add-meal
+      (onAddMeal)="addMeal($event)"
+      (restaurantName)="(restaurantName)"
+    ></app-add-meal>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Naam</th>
+        <th>Beschrijving</th>
+        <th>Calorieen</th>
+        <th>Prijs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let meal of meals">
+        <td>{{ meal.naam }}</td>
+        <td>{{ meal.beschrijving }}</td>
+        <td>{{ meal.calorieen }}</td>
+        <td>{{ meal.prijs }}</td>
+        <td>
+          <div id="meal-buttons-container">
+            <button class="btn btn-danger" type="button" (click)="delete(meal)">
+              Verwijderen
+            </button>
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="addToOrder(meal.id)"
+            >
+              Bestellen
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

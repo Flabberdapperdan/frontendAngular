@@ -4,21 +4,22 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  gaNaarRestaurants() {
-    this.router.navigateByUrl('/restaurants');
-  }
-
-  gaNaarHome() {
+  goToHome() {
     this.router.navigateByUrl('/');
   }
 
+  goToRestaurants() {
+    this.router.navigateByUrl('/restaurants');
+  }
+
+  goToCustomers() {
+    this.router.navigateByUrl('/customers');
+  }
 }

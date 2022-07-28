@@ -1,0 +1,27 @@
+<div class="costumers-container results-container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Naam</th>
+        <th>Adres</th>
+        <th>Tel.</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let costumer of costumers">
+        <td>{{ costumer.naam }}</td>
+        <td>{{ costumer.adres }}</td>
+        <td>{{ costumer.telefoonnummer }}</td>
+        <td>{{ costumer.email }}</td>
+        <td>
+          <div id="costumer-buttons-container">
+            <button class="btn btn-primary" (click)="goToOrders(costumer.id)">
+              Bestellingen
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
